@@ -162,6 +162,7 @@ int main()
 {
 
     FindCycleinGraph();
-
+    double x =  !0;
+    cout << x << endl;
     return 0;
 }
