@@ -1,0 +1,93 @@
+// EditDistance.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <algorithm>
+
+// A Naive recursive C++ program to find minimum number
+// operations to convert str1 to str2
+#include<iostream>
+using namespace std;
+
+// Utility function to find minimum of three numbers
+int min(int x, int y, int z)
+{
+    return min(min(x, y), z);
+}
+
+int editDist(string str1, string str2, int m, int n)
+{
+    // If first string is empty, the only option is to
+    // insert all characters of second string into first
+    if (m == 0) return n;
+
+    // If second string is empty, the only option is to
+    // remove all characters of first string
+    if (n == 0) return m;
+
+    // If last characters of two strings are same, nothing
+    // much to do. Ignore last characters and get count for
+    // remaining strings.
+    if (str1[m - 1] == str2[n - 1])
+        return editDist(str1, str2, m - 1, n - 1);
+
+    // If last characters are not same, consider all three
+    // operations on last character of first string, recursively
+    // compute minimum cost for all three operations and take
+    // minimum of three values.
+    return 1 + min(editDist(str1, str2, m, n - 1),    // Insert
+        editDist(str1, str2, m - 1, n),   // Remove
+        editDist(str1, str2, m - 1, n - 1) // Replace
+        );
+}
+
+// Driver program
+int main()
+{
+    // your code goes here
+    string str1 = "sunday";
+    string str2 = "saturday";
+
+    cout << editDist(str1, str2, str1.length(), str2.length());
+
+    return 0;
+}
+
+
+IN each round, generate pairs of values from A and B.Then see if we can move on from that pair.first
+
+(A, B)
+
+p1 = A[0], find p2 from B where p2 > p1;
+now I have p1, p2...remember position at B, k1,
+next find p3 > p2, and p4 > p3..remember position at B, k2,
+
+a = 0; B = 0;
+FindNextB(int a in A)
+{
+    for (int b = 0; b < B.size())
+    {
+        return b where B[b] > A[a];
+    }
+    return -1;
+}
+
+RecruivePair(index a in A, int* result)
+{
+    if (a >= A.size())
+    {
+        return;
+    }
+    p1 = a;
+    if (FindNextB(a) != -1)
+    {
+        p2 = FindNextB;
+        resutlt apeend[p1, p2];
+        print result;
+        RecruivePair(a+1)
+    }
+
+
+    
+}
+
