@@ -89,29 +89,41 @@ void printPreorder(struct node* node)
 /* Driver program to test above functions*/
 int main()
 {
-    struct node *root = newNode(10);
-    root->left = newNode(5);
-    root->right = newNode(15);
+    //struct node *root = newNode(10);
+    //root->left = newNode(5);
+    //root->right = newNode(15);
 
-    root->left->left = newNode(10);
-    root->left->right = newNode(12);
-    root->left->right->left = newNode(6);
+    //root->left->left = newNode(10);
+    //root->left->right = newNode(12);
+    //root->left->right->left = newNode(6);
 
-    root->right->right = newNode(8);
-    root->right->left = newNode(5);
+    //root->right->right = newNode(8);
+    //root->right->left = newNode(5);
 
+    struct node *root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
 
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    root->left->left->left = newNode(8);
+    root->left->left->right = newNode(9);
 
-   // printf("\nPreorder traversal of binary tree is \n");
-   // printPreorder(root);
+    root->right->left = newNode(6);
+    root->right->right = newNode(7);
+    root->right->right->left = newNode(10);
+    root->right->right->right = newNode(11);
+
+    printf("\nPreorder traversal of binary tree is \n");
+    printPreorder(root);
 
     printf("\nInorder traversal of binary tree is \n");
     printInorder(root);
 
-    //printf("\nPostorder traversal of binary tree is \n");
-    //printPostorder(root);
+    printf("\nPostorder traversal of binary tree is \n");
+    printPostorder(root);
 
-    cout << "sum is left leaf " << sum << endl;
+ //   cout << "sum is left leaf " << sum << endl;
     getchar();
     return 0;
 }
