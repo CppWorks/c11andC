@@ -106,6 +106,17 @@ Node *newNode(int key)
     return temp;
 }
 
+int getSum(int a, int b) {
+
+    while (b != 0){
+        int c = a&b;
+        a = a^b;
+        b = c << 1;
+    }
+
+    return a;
+}
+
 // Driver program to test above functions
 int main()
 {
@@ -122,9 +133,11 @@ int main()
     root->right->left = newNode(6);
     root->right->right = newNode(7);
 
-    createThreaded(root);
+    //createThreaded(root);
 
-    cout << "Inorder traversal of creeated threaded tree is\n";
-    inOrder(root);
+    //cout << "Inorder traversal of creeated threaded tree is\n";
+    //inOrder(root);
+
+    getSum(1, 3);
     return 0;
 }
