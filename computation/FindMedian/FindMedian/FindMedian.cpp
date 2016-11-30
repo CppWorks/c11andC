@@ -335,14 +335,38 @@ void printMedian(int A[], int size)
     delete left;
     delete right;
 }
+
+// STL
+#include <functional>
+
 // Driver code
+typedef std::function<void(int)> tProvider;
+
+void Provider(tProvider provider)
+{
+   // tProvider(1);
+    provider(1);
+
+}
+
 int main()
 {
-    int A[] = { 5, 15, 1, 3, 2, 8, 7, 9, 10, 6, 11, 4 };
-    int size = ARRAY_SIZE(A);
+    //int A[] = { 5, 15, 1, 3, 2, 8, 7, 9, 10, 6, 11, 4 };
+    //int size = ARRAY_SIZE(A);
 
-    // In lieu of A, we can also use data read from a stream
-    printMedian(A, size);
+    //// In lieu of A, we can also use data read from a stream
+    //printMedian(A, size);
+
+    auto getLogFileInfo = [=](int a, int b)
+    {
+        a = a + b;
+        std::cout << "b is " << b << std::endl;
+        std::cout << "a is " << a << std::endl;
+
+
+    };
+
+    Provider(std::bind(getLogFileInfo, std::placeholders::_1, 4));
 
     return 0;
 }
